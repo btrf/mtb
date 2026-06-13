@@ -2,7 +2,7 @@
 
 Mountain bike repair and maintenance tracker.
 
-Track bikes, components, service history, and maintenance reminders — fully offline.
+Track bikes, components, service history, and maintenance reminders — complete offline.
 
 ## Features
 
@@ -13,6 +13,12 @@ Track bikes, components, service history, and maintenance reminders — fully of
 - Data export / import (JSON)
 - Multi-language: RU / EN / DE / FR
 - Works offline (local SQLite)
+
+## Installation
+
+[Download latest release](https://github.com/btrf/mtb/releases/latest)
+
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/btrf)
 
 ## Platforms
 
@@ -50,7 +56,5 @@ SOFTWARE.
 ## Donate
 
 [![YooMoney](https://img.shields.io/badge/Support-YooMoney-orange?style=flat-square&logo=yoomoney)](https://yoomoney.ru/to/41001937179526)
-
-[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/btrf)
 
 ![QR Code for Donations](qr.png)
