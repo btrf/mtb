@@ -164,6 +164,17 @@ body {
   background: #dc2626;
 }
 
+.btn-icon {
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+  flex-shrink: 0;
+}
+
 .btn-outline {
   background: transparent;
   color: var(--text-muted);
@@ -213,6 +224,7 @@ body {
 
 .card-actions {
   display: flex;
+  align-items: center;
   gap: 6px;
   flex-shrink: 0;
 }

@@ -285,8 +285,8 @@ async function renderBikes() {
         </div>
         <div class="card-actions">
           <button class="btn btn-sm btn-outline" onclick="showBikeDetail('${bike.id}')">${t('open')}</button>
-          <button class="btn btn-sm btn-outline" onclick="showEditBikeModal('${bike.id}')">✏️</button>
-          <button class="btn btn-sm btn-danger" onclick="deleteBike('${bike.id}')">🗑</button>
+          <button class="btn btn-sm btn-outline btn-icon" onclick="showEditBikeModal('${bike.id}')">✏️</button>
+          <button class="btn btn-sm btn-danger btn-icon" onclick="deleteBike('${bike.id}')">🗑</button>
         </div>
       </div>
     </div>`;
@@ -342,9 +342,9 @@ async function showBikeDetail(id) {
   showModal(`<h2>${esc(bike.brand)} ${esc(bike.model)}</h2>
     <div style="margin-bottom:14px;font-size:13px;color:var(--text-muted)">${bike.year ? '📅 ' + bike.year : ''}${bike.frameSize ? ' · ' + t('frame_size') + ': ' + bike.frameSize : ''}${bike.color ? ' · ' + t('color') + ': ' + bike.color : ''}${bike.serial ? ' · S/N: ' + bike.serial : ''}${bike.notes ? '<br>📝 ' + bike.notes : ''}<br>📏 ${kmFormat(lastKm)}</div>
     <div class="section-header"><h3>🔧 ${t('components_title')}</h3><button class="btn btn-sm btn-primary" onclick="showAddComponentModal('${id}')">${t('add_component')}</button></div>
-    <div style="margin-bottom:14px">${components.length === 0 ? `<div style="color:var(--text-muted);font-size:13px">${t('no_components')}</div>` : components.map(c => `<div class="service-entry" style="border-left-color:var(--primary)"><div style="display:flex;justify-content:space-between"><div><div class="type">${esc(c.name)}</div><div class="date">${esc(c.brand||'')} · ${t('install_date')}: ${c.installedDate || '—'} · ${kmFormat(c.installedKm)}</div></div><div><button class="btn btn-sm btn-outline" onclick="showEditComponentModal('${c.id}')">✏️</button><button class="btn btn-sm btn-danger" onclick="deleteComponent('${c.id}')">🗑</button></div></div></div>`).join('')}</div>
+    <div style="margin-bottom:14px">${components.length === 0 ? `<div style="color:var(--text-muted);font-size:13px">${t('no_components')}</div>` : components.map(c => `<div class="service-entry" style="border-left-color:var(--primary)"><div style="display:flex;justify-content:space-between"><div><div class="type">${esc(c.name)}</div><div class="date">${esc(c.brand||'')} · ${t('install_date')}: ${c.installedDate || '—'} · ${kmFormat(c.installedKm)}</div></div><div><button class="btn btn-sm btn-outline btn-icon" onclick="showEditComponentModal('${c.id}')">✏️</button><button class="btn btn-sm btn-danger btn-icon" onclick="deleteComponent('${c.id}')">🗑</button></div></div></div>`).join('')}</div>
     <div class="section-header"><h3>📋 ${t('service_log_title')}</h3><button class="btn btn-sm btn-primary" onclick="showAddServiceModal('${id}')">${t('add_service_btn')}</button></div>
-    <div>${services.length === 0 ? `<div style="color:var(--text-muted);font-size:13px">${t('no_services')}</div>` : services.map(s => `<div class="service-entry" style="border-left-color:${serviceColor(s.type)}"><div style="display:flex;justify-content:space-between"><div><div class="date">${s.date} · ${s.odometer ? kmFormat(s.odometer) : '—'}</div><div class="type">${esc(s.type)}</div>${s.description ? '<div class="desc">' + esc(s.description) + '</div>' : ''}${s.cost ? '<div class="cost">' + costFormat(s.cost) + '</div>' : ''}${s.parts ? '<div class="date">🔩 ' + esc(s.parts) + '</div>' : ''}</div><button class="btn btn-sm btn-danger" onclick="deleteService('${s.id}')">🗑</button></div></div>`).join('')}</div>
+    <div>${services.length === 0 ? `<div style="color:var(--text-muted);font-size:13px">${t('no_services')}</div>` : services.map(s => `<div class="service-entry" style="border-left-color:${serviceColor(s.type)}"><div style="display:flex;justify-content:space-between"><div><div class="date">${s.date} · ${s.odometer ? kmFormat(s.odometer) : '—'}</div><div class="type">${esc(s.type)}</div>${s.description ? '<div class="desc">' + esc(s.description) + '</div>' : ''}${s.cost ? '<div class="cost">' + costFormat(s.cost) + '</div>' : ''}${s.parts ? '<div class="date">🔩 ' + esc(s.parts) + '</div>' : ''}</div><button class="btn btn-sm btn-danger btn-icon" onclick="deleteService('${s.id}')">🗑</button></div></div>`).join('')}</div>
   `);
 }
 
@@ -420,7 +420,7 @@ function filterServiceLog() {
   if (!filtered.length) { list.innerHTML = `<div class="empty-state"><div class="icon">📝</div><p>${t('not_found')}</p></div>`; return; }
   list.innerHTML = filtered.map(s => {
     const b = bikes.find(x => x.id === s.bikeId);
-    return `<div class="card"><div class="card-header"><div><div class="card-title" style="display:flex;align-items:center;gap:8px"><span class="badge ${s.cost ? 'badge-primary' : 'badge-muted'}">${esc(s.type)}</span>${b ? esc(b.brand) + ' ' + esc(b.model) : '—'}</div><div class="card-subtitle">${s.date} · ${s.odometer ? kmFormat(s.odometer) : t('no_odometer')}</div></div><button class="btn btn-sm btn-danger" onclick="deleteService('${s.id}')">🗑</button></div><div class="card-body">${s.description ? '<p>' + esc(s.description) + '</p>' : ''}${s.parts ? '<p>🔩 ' + esc(s.parts) + '</p>' : ''}${s.cost ? '<p style="margin-top:4px"><strong>' + costFormat(s.cost) + '</strong></p>' : ''}</div></div>`;
+    return `<div class="card"><div class="card-header"><div><div class="card-title" style="display:flex;align-items:center;gap:8px"><span class="badge ${s.cost ? 'badge-primary' : 'badge-muted'}">${esc(s.type)}</span>${b ? esc(b.brand) + ' ' + esc(b.model) : '—'}</div><div class="card-subtitle">${s.date} · ${s.odometer ? kmFormat(s.odometer) : t('no_odometer')}</div></div><button class="btn btn-sm btn-danger btn-icon" onclick="deleteService('${s.id}')">🗑</button></div><div class="card-body">${s.description ? '<p>' + esc(s.description) + '</p>' : ''}${s.parts ? '<p>🔩 ' + esc(s.parts) + '</p>' : ''}${s.cost ? '<p style="margin-top:4px"><strong>' + costFormat(s.cost) + '</strong></p>' : ''}</div></div>`;
   }).join('');
 }
 
@@ -478,7 +478,7 @@ function drawReminders(reminders) {
       if (r.intervalKm) detailParts.push('· ' + t('every_km') + ' ' + r.intervalKm + ' ' + t('km_unit'));
       if (r.intervalDays) detailParts.push('· ' + t('every_days') + ' ' + r.intervalDays + ' ' + t('days_unit'));
       if (r.lastDate) detailParts.push('· ' + t('last') + ': ' + r.lastDate);
-      html += `<div class="reminder-item"><div class="reminder-status" style="background:${s === 'overdue' ? 'var(--danger)' : s === 'upcoming' ? 'var(--warning)' : 'var(--success)'}"></div><div class="reminder-info"><div class="title">${esc(reminderTitle(r))}</div><div class="detail">${detailParts.join(' ')}</div></div><button class="btn btn-sm btn-outline" onclick="resetReminder('${r.id}')">${t('done_btn')}</button><button class="btn btn-sm btn-danger" onclick="deleteReminder('${r.id}')">🗑</button></div>`;
+      html += `<div class="reminder-item"><div class="reminder-status" style="background:${s === 'overdue' ? 'var(--danger)' : s === 'upcoming' ? 'var(--warning)' : 'var(--success)'}"></div><div class="reminder-info"><div class="title">${esc(reminderTitle(r))}</div><div class="detail">${detailParts.join(' ')}</div></div><button class="btn btn-sm btn-outline" onclick="resetReminder('${r.id}')">${t('done_btn')}</button><button class="btn btn-sm btn-danger btn-icon" onclick="deleteReminder('${r.id}')">🗑</button></div>`;
     }
   }
   list.innerHTML = html || `<div class="empty-state"><div class="icon">✅</div><p>${t('all_good')}</p></div>`;
