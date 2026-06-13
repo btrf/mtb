@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MTB Service</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="app">
+    <header class="app-header">
+      <div class="header-content">
+        <h1>MTB Service</h1>
+        <p class="subtitle" id="header-subtitle">Ремонт и обслуживание горных велосипедов</p>
+      </div>
+      <div class="lang-switcher" id="lang-switcher"></div>
+    </header>
+
+    <nav class="app-nav">
+      <button class="nav-btn active" data-view="dashboard" id="nav-dashboard">Главная</button>
+      <button class="nav-btn" data-view="bikes" id="nav-bikes">Велосипеды</button>
+      <button class="nav-btn" data-view="service" id="nav-service">Журнал</button>
+      <button class="nav-btn" data-view="reminders" id="nav-reminders">Напоминания</button>
+    </nav>
+
+    <main class="app-main">
+      <div id="view-dashboard" class="view active"></div>
+      <div id="view-bikes" class="view"></div>
+      <div id="view-service" class="view"></div>
+      <div id="view-reminders" class="view"></div>
+    </main>
+  </div>
+
+  <div id="modal-overlay" class="modal-overlay hidden">
+    <div class="modal" id="modal-content"></div>
+  </div>
+
+  <script src="locales.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

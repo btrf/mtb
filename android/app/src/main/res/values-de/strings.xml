@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">MTB Service</string>
+    <string name="export_success">Datei gespeichert</string>
+    <string name="export_err">Exportfehler</string>
+    <string name="export_error">Exportfehler: %s</string>
+    <string name="import_success">Daten importiert</string>
+    <string name="import_error">Importfehler: %s</string>
+</resources>

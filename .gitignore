@@ -1,0 +1,30 @@
+# Android
+android/.gradle/
+android/build/
+android/app/build/
+android/local.properties
+*.iml
+.idea/
+
+# Keystore
+*.jks
+*.keystore
+*.b64
+
+# APK
+*.apk
+*.aab
+
+# Node
+node_modules/
+MTB_Service.exe
+build-exe.bat
+sea-config.json
+
+# OS
+*.log
+Thumbs.db
+.DS_Store
+
+# Env
+.env

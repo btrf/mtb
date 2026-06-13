@@ -1,0 +1,43 @@
+name: Build APK
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
+      - name: Decode keystore
+        run: echo "$KEYSTORE_BASE64" | base64 -d > android/keystore.jks
+        env:
+          KEYSTORE_BASE64: ${{ secrets.KEYSTORE_BASE64 }}
+
+      - name: Grant execute permission for gradlew
+        run: chmod +x gradlew
+        working-directory: android
+
+      - name: Build release APK
+        run: ./gradlew assembleRelease
+        working-directory: android
+        env:
+          STORE_PW: ${{ secrets.STORE_PW }}
+          KEY_PW: ${{ secrets.KEY_PW }}
+
+      - name: Rename APK
+        run: mv app/build/outputs/apk/release/app-release.apk mtb-service-${{ github.ref_name }}.apk
+        working-directory: android
+
+      - name: Create Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: android/mtb-service-${{ github.ref_name }}.apk
+          name: MTB Service ${{ github.ref_name }}

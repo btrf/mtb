@@ -1,0 +1,16 @@
+{
+  "name": "mtb-service",
+  "version": "1.0.0",
+  "description": "MTB Service — Ремонт и обслуживание горных велосипедов",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "build": "node build.js"
+  },
+  "dependencies": {
+    "sql.js": "^1.11.0"
+  },
+  "devDependencies": {
+    "esbuild": "^0.24.0"
+  }
+}

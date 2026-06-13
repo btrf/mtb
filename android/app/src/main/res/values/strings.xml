@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">MTB Service</string>
+    <string name="export_success">Файл сохранён</string>
+    <string name="export_err">Ошибка экспорта</string>
+    <string name="export_error">Ошибка экспорта: %s</string>
+    <string name="import_success">Данные импортированы</string>
+    <string name="import_error">Ошибка импорта: %s</string>
+</resources>
