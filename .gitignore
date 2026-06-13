@@ -28,3 +28,6 @@ Thumbs.db
 
 # Env
 .env
+
+# Runtime data
+mtb-service.db
