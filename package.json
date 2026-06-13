@@ -11,6 +11,7 @@
     "sql.js": "^1.11.0"
   },
   "devDependencies": {
-    "esbuild": "^0.24.0"
+    "esbuild": "^0.24.0",
+    "puppeteer": "^25.1.0"
   }
 }
