@@ -63,8 +63,9 @@ jobs:
         run: node --experimental-sea-config sea-config.json
 
       - name: Inject blob into node.exe
+        shell: cmd
         run: |
-          copy /Y "$env:NODE_EXE" MTB_Service.exe
+          copy /Y "%ProgramFiles%\nodejs\node.exe" MTB_Service.exe
           npx postject MTB_Service.exe NODE_SEA_BLOB sea-prep.blob --sentinel-fuse NODE_SEA_FUSE_fce680ab2cc467b6e072b8b5df1996b2 --overwrite
 
       - name: Rename and upload EXE
