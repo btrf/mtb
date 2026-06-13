@@ -4,7 +4,7 @@ Mountain bike repair and maintenance tracker.
 
 Track bikes, components, service history, and maintenance reminders — complete offline.
 
-![GUI](gui.jpg)
+![Demo](docs/demo.gif)
 
 ## Features
 
