@@ -1,4 +1,4 @@
-name: Build APK
+name: Build and Release
 
 on:
   push:
@@ -9,7 +9,7 @@ permissions:
   contents: write
 
 jobs:
-  build:
+  build-apk:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -39,8 +39,52 @@ jobs:
         run: mv app/build/outputs/apk/release/app-release.apk mtb-service-${{ github.ref_name }}.apk
         working-directory: android
 
+      - uses: actions/upload-artifact@v4
+        with:
+          name: apk
+          path: android/mtb-service-${{ github.ref_name }}.apk
+
+  build-windows:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Bundle app
+        run: node build.js
+
+      - name: Generate SEA blob
+        run: node --experimental-sea-config sea-config.json
+
+      - name: Inject blob into node.exe
+        run: |
+          copy /Y "$env:NODE_EXE" MTB_Service.exe
+          npx postject MTB_Service.exe NODE_SEA_BLOB sea-prep.blob --sentinel-fuse NODE_SEA_FUSE_fce680ab2cc467b6e072b8b5df1996b2 --overwrite
+
+      - name: Rename and upload EXE
+        run: move MTB_Service.exe mtb-service-${{ github.ref_name }}.exe
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: exe
+          path: mtb-service-${{ github.ref_name }}.exe
+
+  create-release:
+    needs: [build-apk, build-windows]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v4
+
       - name: Create Release
         uses: softprops/action-gh-release@v2
         with:
-          files: android/mtb-service-${{ github.ref_name }}.apk
+          files: |
+            apk/mtb-service-*.apk
+            exe/mtb-service-*.exe
           name: MTB Service ${{ github.ref_name }}
