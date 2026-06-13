@@ -65,7 +65,7 @@ jobs:
       - name: Inject blob into node.exe
         shell: cmd
         run: |
-          copy /Y "%ProgramFiles%\nodejs\node.exe" MTB_Service.exe
+          for /f "delims=" %i in ('where node') do copy /Y "%i" MTB_Service.exe
           npx postject MTB_Service.exe NODE_SEA_BLOB sea-prep.blob --sentinel-fuse NODE_SEA_FUSE_fce680ab2cc467b6e072b8b5df1996b2 --overwrite
 
       - name: Rename and upload EXE
