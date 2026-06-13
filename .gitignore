@@ -30,3 +30,6 @@ Thumbs.db
 
 # Runtime data
 mtb-service.db
+
+# GIF generator (local only)
+scripts/
