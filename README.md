@@ -16,6 +16,29 @@ Track bikes, components, service history, and maintenance reminders — complete
 - Multi-language: RU / EN / DE / FR
 - Works offline (local SQLite)
 
+## Comparison
+
+| Feature | MTB Service | Excel / Sheets | BikeWrench | ProBikeGarage |
+|---------|:-----------:|:--------------:|:----------:|:-------------:|
+| **Price** | Free | Free\* / Paid | Free + $3–5 Pro | Freemium / sub |
+| **Open source** | ✅ MIT | ❌ | ❌ | ❌ |
+| **Offline** | ✅ 100% | ✅ | ❌ cloud-reliant | ❌ cloud-reliant |
+| **Privacy** | ✅ zero data leaves | ✅ local file | ❌ | ❌ |
+| **Platforms** | Win + Android | Web + all | Android only | Android + iOS |
+| **Multi‑language** | RU / EN / DE / FR | depends | EN only | EN only |
+| **Bike management** | ✅ | manual setup | ✅ | ✅ |
+| **Component tracking** | ✅ | manual | ✅ | ✅ |
+| **Service history** | ✅ | manual | ✅ | ✅ |
+| **Cost tracking** | ✅ | ✅ | ✅ | ✅ |
+| **Smart reminders** | ✅ 12 presets | ❌ | ✅ custom | ✅ custom |
+| **Export / Import** | JSON + DB | XLSX / CSV | CSV | CSV / PDF |
+| **Built‑in presets** | ✅ 12 rules | ❌ | limited | limited |
+| **Custom reminders** | ✅ km & days | ❌ | ✅ | ✅ |
+
+\* — requires existing Microsoft Office or Google account.
+
+> **Why MTB Service?** The only fully offline, privacy-first, open-source bike tracker with built-in maintenance presets, no ads, no sign-up, and no limits.
+
 ## Installation
 
 [Download latest release](https://github.com/btrf/mtb/releases/latest)
