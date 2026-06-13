@@ -19,7 +19,6 @@ android/local.properties
 node_modules/
 MTB_Service.exe
 build-exe.bat
-sea-config.json
 
 # OS
 *.log
