@@ -217,6 +217,13 @@ body {
   flex-shrink: 0;
 }
 
+.btn-icon {
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  flex-shrink: 0;
+}
+
 .badge {
   display: inline-block;
   padding: 2px 8px;
